@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8' />
+    <title>Sort</title>
+    <link rel='stylesheet' href='styles.css' />
+</head>
+
+<body>
+    <div class="page">
+        <header class="menu">
+            <nav>
+                <ul>
+                    <li><a href='index.html'>Home</a></li>
+                    <li><a href='bino.html'>Rabbits</a></li>
+                    <li><a href='sort.html'>Sort</a></li>
+                </ul>
+                <nav>
+
+        </header>
+
+
+
+        <article class="about">
+
+            <h1>HeapSort Implementation</h1>
+
+            <p>Below is a slightly modified (by me for better or for worse) code example of a heapsort I found on <a href="https://www.geeksforgeeks.org/heap-sort/">geeksforgeeks</a></p>
+
+            <div class="code-container">
+            <pre>
+            <code class="language-java">            
+
+                public class HeapSort {
+
+                    static void sort(int[] arr) {
+                        int n = arr.length;
+                        buildHeapMax(arr,n);
+                        for(int i = n - 1 ; i >= 0 ; i--) {
+                            swapper(arr,i, 0);
+                            heapify(arr, i, 0);
+                        }
+                    }
+                
+                    static void buildHeapMax(int[] arr, int n) {
+                        for (int i = n/2 - 1; i >= 0 ; i--){
+                            heapify(arr, n, i);
+                        }
+                    }
+                
+                    static void heapify(int arr[], int n, int i){
+                        int largest = i;
+                        int l = 2*i + 1;
+                        int r = 2*i + 2;
+                
+                        if (l &lt n && arr[l] > arr[largest]) {
+                            largest = l;
+                        }
+                
+                        if (r &lt n && arr[r] > arr[largest]) {
+                            largest = r;
+                        }
+                
+                        if(largest != i){
+                            swapper(arr, largest, i);
+                            heapify(arr,n,largest);
+                        }
+                    }
+
+                    static void swapper(int[] arr, int largest, int i) {
+                        int swap = arr[i];
+                        arr[i] = arr[largest];
+                        arr[largest] = swap;
+                    }
+
+                    static void printArray(int arr[])
+                    {
+                        int n = arr.length;
+                        for (int i=0; i &lt n; ++i)
+                            System.out.print(arr[i]+" ");
+                        System.out.println();
+                    }
+                    public static void main(String[] args) {
+                        int arr[] = {12, 11, 13, 5, 6, 7};
+                        sort(arr);
+                        printArray(arr);
+                    }
+                
+                
+            </code>
+            </pre>
+
+        </div>
+        </article>
+
+
+
+        <footer>
+            <span>Copyright &#169;2021 <a href="https://github.com/VeTh1987"> Thierry Verheyen </a> All Rights Reserved
+            </span>
+        </footer>
+
+
+    </div>
+
+</body>
+
+</html>
